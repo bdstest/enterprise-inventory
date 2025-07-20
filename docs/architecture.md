@@ -2,7 +2,7 @@
 
 ## System Overview
 
-The Enterprise Inventory System is a comprehensive asset management platform designed to track, monitor, and manage organizational assets across multiple locations and departments.
+The Enterprise Inventory System addresses the complex interdependencies inherent in enterprise asset management, where inventory decisions create ripple effects across procurement cycles, operational continuity, and financial planning. The architecture recognizes that asset optimization is fundamentally a systems problem involving trade-offs between carrying costs, stockout risks, and operational flexibility, while managing the second-order effects of inventory decisions on supplier relationships, cash flow, and organizational agility.
 
 ## Architecture Components
 
