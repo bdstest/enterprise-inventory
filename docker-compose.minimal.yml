@@ -1,0 +1,45 @@
+services:
+  # PostgreSQL Database - Minimal Configuration
+  postgres:
+    image: postgres:15-alpine
+    container_name: inventory_postgres_minimal
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: inventory_minimal
+      POSTGRES_USER: inventory_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme123}
+    volumes:
+      - postgres_minimal_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - inventory_network
+
+  # FastAPI Application - Minimal
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: inventory_app_minimal
+    restart: unless-stopped
+    environment:
+      - ENVIRONMENT=development
+      - DATABASE_URL=postgresql+asyncpg://inventory_user:${POSTGRES_PASSWORD:-changeme123}@postgres:5432/inventory_minimal
+      - SECRET_KEY=minimal-demo-key-not-for-production
+      - JWT_SECRET_KEY=minimal-jwt-key-not-for-production
+      - JWT_ALGORITHM=HS256
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./uploads:/app/uploads
+    networks:
+      - inventory_network
+    depends_on:
+      - postgres
+
+networks:
+  inventory_network:
+    driver: bridge
+
+volumes:
+  postgres_minimal_data:
