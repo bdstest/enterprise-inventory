@@ -663,7 +663,7 @@ class AuditLogger {
     }
     
     sendToSIEM(audit_entry) {
-        // Integration with SIEM system (Splunk, ELK, etc.)
+        // Integration with SIEM system (OpenSearch, Wazuh, Graylog, etc.)
         console.log('CRITICAL SECURITY EVENT:', audit_entry);
     }
 }

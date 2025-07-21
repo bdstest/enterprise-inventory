@@ -604,8 +604,8 @@ POST /api/v1/webhooks/asset-status
 ```
 
 ## Rate Limiting
-- **Standard**: 1000 requests per hour
-- **Premium**: 5000 requests per hour
+- **Community**: 1000 requests per hour
+- **Standard**: 5000 requests per hour
 - **Enterprise**: 10000 requests per hour
 
 ## SDK Examples
